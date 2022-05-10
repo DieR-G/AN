@@ -1,0 +1,138 @@
+\section{Deducción del método.}
+Para encontrar alguna raíz de la función algebraica $f(x)$ primero 
+se parte de tres puntos $\bigl\{\bigl(x_2,f(x_2)\bigr),\bigl(x_1,f(x_1)\bigr),\bigl(x_0,f(x_0)\bigr)\bigr\}$ que sirven como base para 
+encontrar un polinomio interpolante de segundo grado que aproxime la función
+$f(x)$. Sin perder generalidad se asume que $x_2<x_1<x_0$ y se define $w(x)=x-x_2$, por lo
+que el polinomio interpolante tiene la forma
+\begin{equation}
+    \label{quatraic_muller}
+    P(w)=aw^2+bw+c
+\end{equation}
+El motivo de esto es que se quiere encontrar el valor más pequeño $x-x_2$ que sea al mismo tiempo
+una raíz del polinomio así que lo planteado en \ref{quatraic_muller} simplifica ligeramente
+el álgebra a desarrollar para encontrar los valores buscados en la ecuación.\\
+
+De lo anterior entonces es necesario encontrar los valores de $a,b,c$
+para saber cuál es el polinomio interpolante en los puntos establecido,
+para esto se plantea el siguiente sistema de ecuaciones
+\begin{align}
+    \label{eq1_muller}P(w(x_2))&=c=f(x_2)\\
+    \label{eq2_muller}P(w(x_1))&=a(x_1-x_2)^2+b(x_1-x_2)+f(x_2)=f(x_1)\\
+    \label{eq3_muller}P(w(x_0))&=a(x_0-x_2)^2+b(x_0-x_2)+f(x_2)=f(x_0)
+\end{align}
+Sustrayendo \ref{eq2_muller} de \ref{eq3_muller}
+\begin{multline*}
+    a\Bigl((x_0-x_2)^2-(x_1-x_2)^2\Bigr)+b\Bigl((x_0-x_2)-(x_1-x_2)\Bigr)\\=f(x_0)-f(x_1)
+\end{multline*}
+\begin{multline*}
+    a\Bigl[\Bigl((x_0-x_2)-(x_1-x_2)\Bigr)\Bigl((x_0-x_2)+(x_1-x_2)\Bigr)\Bigr]\\
+    +b\Bigl((x_0-x_2)-(x_1-x_2)\Bigr)=f(x_0)-f(x_1)
+\end{multline*}
+\begin{multline*}
+    a\Bigl[(x_0-x_2)+(x_1-x_2)\Bigr]+b=\frac{f(x_0)-f(x_1)}{(x_0-x_2)-(x_1-x_2)}
+\end{multline*}
+\begin{equation*}
+    a\Bigl[(x_0-x_2)+(x_1-x_2)\Bigr]+b=\frac{f(x_0)-f(x_1)}{x_0-x_1}
+\end{equation*}
+\begin{equation*}
+    a\Bigl[(x_0-x_2)+(x_1-x_2)\Bigr]+b=f[x_0,x_1]
+\end{equation*}
+\begin{equation}
+    \label{eq4_muller}
+    b=f[x_0,x_1]-a\Bigl[(x_0-x_2)+(x_1-x_2)\Bigr]
+\end{equation}
+Ahora sustituyendo \refeq{eq4_muller} en \refeq{eq2_muller}
+\begin{multline*}
+    a(x_1-x_2)^2+\Bigl(f[x_0,x_1]-a(x_0+x_1+2x_2)\Bigr)(x_1-x_2)\\
+    +f(x_2)=f(x_1)
+\end{multline*}
+\begin{multline*}
+    a(x_1-x_2)^2-a(x_0+x_1-2x_2)(x_1-x_2)+f[x_0,x_1](x_1-x_2)\\
+    +f(x_2)=f(x_1)
+\end{multline*}
+\begin{multline*}
+    a\Bigl((x_1-x_2)(x_1-x_2-x_0-x_1+2x_2)\Bigr)+f[x_0,x_1](x_1-x_2)\\+f(x_2)=f(x_1)
+\end{multline*}
+\begin{equation*}
+    a\Bigl((x_1-x_2)(x_2-x_0)\Bigr)+f[x_0,x_1](x_1,x_2)+f(x_2)=f(x_1)
+\end{equation*}
+\begin{equation*}
+    a(x_2-x_0)+f[x_0,x_1]=\frac{f(x_1)-f(x_2)}{x_1-x_2}
+\end{equation*}
+\begin{equation*}
+    a(x_2-x_0)=f[x_1,x_2]-f[x_0,x_2]
+\end{equation*}
+\begin{equation}
+    \label{eq5_muller}
+    a=\frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0}=f[x_2,x_1,x_0]
+\end{equation}
+Sustituyendo \refeq{eq5_muller} en \refeq{eq4_muller}
+\begin{equation*}
+    b=f[x_0,x_1]-f[x_2,x_1,x_0]\Bigl[(x_0-x_2)+(x_1-x_2)\Bigr]
+\end{equation*}
+\begin{equation*}
+    b=f[x_0,x_1]-f[x_2,x_1,x_0](x_0-x_2)-f[x_2,x_1,x_0](x_1-x_2)
+\end{equation*}
+\begin{equation*}
+    b=f[x_0,x_1]-f[x_0,x_1]+f[x_2,x_1]-f[x_2,x_1,x_0](x_1-x_2)
+\end{equation*}
+\begin{equation*}
+    b=f[x_2,x_1]+f[x_2,x_1,x_0](x_2-x_1)
+\end{equation*}
+\begin{equation*}
+    b=f[x_2,x_1]+\frac{(x_1-x_2)\frac{\bigl(f(x_0)-f(x_1)\bigr)}{x_0-x_1}+(x_1-x_2)\left(\frac{f(x_1)-f(x_2)}{x_1-x_2}\right)}{x_0-x_2}
+\end{equation*}
+\begin{multline*}
+    b=f[x_2,x_1]+\frac{\frac{x_2-x_1}{x_0-x_1}\bigl(f(x_0)-f(x_1)\bigr)+f(x_1)-f(x_2)}{x_0-x_2}\\
+    -\frac{f(x_0)-f(x_2)}{x_0-x_2}+f[x_2,x_0]
+\end{multline*}
+\begin{multline*}
+    b=f[x_2,x_1]+f[x_2,x_0]\\
+    +\frac{\frac{x_2-x_1}{x_0-x_1}\bigl(f(x_0)-f(x_1)\bigr)+f(x_1)-f(x_2)-f(x_0)+f(x_2)}{x_0-x_2}
+\end{multline*}
+\begin{multline*}
+    b=f[x_2,x_1]+f[x_2,x_0]\\
+    +\frac{\frac{x_2-x_1}{x_0-x_1}\bigl(f(x_0)-f(x_1)\bigr)-f(x_0-f(x_1))}{x_0-x_2}
+\end{multline*}
+\begin{equation*}
+    b=f[x_2,x_1]+f[x_2,x_0]+\frac{\bigl(f(x_0)-f(x_1)\bigr)\left(\frac{x_2-x_1}{x_0-x_1}-1\right)}{x_0-x_2}
+\end{equation*}
+\begin{equation*}
+    b=f[x_2,x_1]+f[x_2,x_0]+\frac{\bigl(f(x_0)-f(x_1)\bigr)\left(\frac{x_2-x_1-x_0+x_1}{x_0-x_1}\right)}{x_0-x_2}
+\end{equation*}
+\begin{equation*}
+    b=f[x_2,x_1]+f[x_2,x_0]+\frac{\bigl(f(x_0)-f(x_1)\bigr)\left(\frac{x_2-x_0}{x_0-x_1}\right)}{x_0-x_2}
+\end{equation*}
+\begin{equation*}
+    b=f[x_2,x_1]+f[x_2,_x0]-\frac{f(x_0-f(x_1))}{x_0-x_1}\frac{x_0-x_2}{x_0-x_2}
+\end{equation*}
+\begin{equation}
+    \label{eq6_muller}
+    b=f[x_2,x_1]+f[x_2,x_0]-f[x_1,x_0]
+\end{equation}
+Con los planteamientos anteriores entonces sabemos que
+\begin{equation*}
+    a=f[x_2,x_1,x_0]
+\end{equation*}
+\begin{equation*}
+    b=f[x_2,x_1]+f[x_2,x_0]-f[x_1,x_0]
+\end{equation*}
+\begin{equation*}
+    c=f(x_2)
+\end{equation*}
+lo cual significa que se tienen los datos suficientes para despejar (\refeq{quatraic_muller})
+y encontrar $w$, así que utilizando la fórmula cuadrática se tiene que
+\begin{equation*}
+    w=\frac{-b\pm\sqrt{b^2-4ac}}{2a}=-\frac{2c}{b\pm\sqrt{b^2-4ac}}
+\end{equation*}
+y haciendo las sustituciones correspondientes se puede concluir entonces que
+\begin{equation*}
+    x=x_2-\frac{2f(x_2)}{b\pm\sqrt{b^2-4f(x_2)f[x_2,x_1,x_0]}}
+\end{equation*}
+aplicando de forma sucesiva la ecuación anterior se tiene
+\begin{equation}
+    \label{muller_algorithm}
+    x_{n+1}=x_n-\frac{2f(x_n)}{b\pm\sqrt{b^2-4f(x_n)f[x_n,x_{n-1},x_{n-2}]}}
+\end{equation}
+lo cual concluye la deducción del método de Muller para encontrar
+raíces de funciones algebraicas.

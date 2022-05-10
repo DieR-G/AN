@@ -1,0 +1,79 @@
+\section{Análisis de convergencia.}
+\subsection{Demostración de convergencia.}
+Sea $p$ la raíz de la función $f(x)$ que se busca encontrar con el algoritmo,
+se asume que si $x_n \rightarrow p$ entonces por el lemma \refeq{diff_deriv} $b \rightarrow f'(p)$
+y $a \rightarrow f''(p)$ entonces sustituyendo en (\refeq{muller_algorithm}) se tiene que
+\begin{equation}
+    \label{muller_convergence_eq}
+    p = p - \frac{2f(p)}{f'(p)\pm\sqrt{\left(f'(p)\right)^2-4f(p)f''(p)}}
+\end{equation}
+y ya que por definición $f(p)=0$ se puede concluir que la expresión (\refeq{muller_convergence_eq})
+es igual a $0$ siempre que $f'(p) \neq 0$ así que el método converge a una raíz de la ecuación.
+\subsection{Análisis del error y orden de convergencia.}
+Para establecer una expresión que defina el error del método anteriormente planteado se define $P(p)$
+como el polinomio interpolante de segundo grado evaluado en la raíz $p$ y $f(p)$ como la función aproximada
+evaluada en su raíz. Además por (\refeq{muller_algorithm}) se sabe que $x_{n+1}$ es una raíz del polinomio
+interpolante, entonces por (\ref{lagrange_error}) se sabe que
+\begin{equation}
+    \label{error_muller_eq1}
+    P(p)-f(p)=-\frac{f'''(\xi)}{6}(p-x_n)(p-x_{n-1})(p-x_{n-2})
+\end{equation}
+luego $f(p)=0$ y utilizando el teorema del valor medio se sabe que 
+\[\frac{P(p)-P(x_{n+1})}{p-x_{n+1}}=f'(p),\,P(p)=f'(p)(p-x_{n+1})\]
+ya que $P(x_{n+1})=0$, entonces sustituyendo en (\refeq{error_muller_eq1}) se tiene
+\begin{equation}
+    \label{error_muller_eq2}
+    p-x_{n+1}=-\frac{f'''(p)}{6f'(p)}(p-x_n)(p-x_{n-1})(p-x_{n-2})
+\end{equation}
+lo cual es un punto de partida suficiente para establecer el error del método y 
+posteriormente su orden de convergencia. Utilizando la notación de error $|e_{n+1}|=|p-x_{n+1}|$
+y definiendo $M=|\frac{f'''(p)}{6f'(p)}|$ se puede reescribir \refeq{error_muller_eq2} como
+\begin{equation}
+    \label{error_muller}
+    |e_{n+1}|=M|e_{n}||e_{n-1}||e_{n-2}|
+\end{equation}
+y utilizando la definición de orden de convergencia se tiene que
+\begin{equation}
+    \label{error_e0}
+    |e_{n+1}|=C|e_n|^\alpha
+\end{equation}
+lo cual implica también que
+\begin{equation}
+    \label{error_e1}
+    |e_n|=C|e_{n-1}|^\alpha
+\end{equation}
+y despejando $|e_{n-1}|$ se tiene
+\begin{equation}
+    \label{error_e2}
+    |e_{n-1}|=\left(\frac{1}{C}|e_n|\right)^\frac{1}{\alpha}
+\end{equation}
+y de forma similar 
+\[|e_{n-1}|=C|e_{n-2}|^\alpha\]
+así que sustituyendo la ecuación anterior en (\refeq{error_e2}) y despejando $|e_{n-2}|$ se tiene
+\begin{equation}
+    \label{error_e3}
+    |e_{n-2}|=\frac{1}{C^{\frac{1}{\alpha}+\frac{1}{\alpha^2}}}|e_n|^{\frac{1}{\alpha^2}}
+\end{equation}
+por lo que reemplazando (\refeq{error_e0}), (\refeq{error_e1}), (\refeq{error_e2}) y (\refeq{error_e3})
+en (\refeq{error_muller}) se tiene que
+\begin{equation*}
+    C|e_n|^\alpha=M|e_n|\frac{1}{C^{\frac{1}{\alpha}}}|e_n|^{\frac{1}{\alpha}}\left(\frac{1}{C^{\frac{1}{\alpha}+\frac{1}{\alpha^2}}}\right)|e_n|^{\frac{1}{\alpha^2}}
+\end{equation*}
+simplificando entonces se tiene que
+\begin{equation}
+    \label{muller_order_eq}
+    C|e_n|^\alpha=\frac{M}{C^{\frac{2}{\alpha}+\frac{1}{\alpha^2}}}|e_n|^{1+\frac{1}{\alpha}+\frac{1}{\alpha^2}}
+\end{equation}
+lo cual implica que $C=\frac{M}{C^{\frac{2}{\alpha}+\frac{1}{\alpha^2}}}$ y $\alpha=1+\frac{1}{\alpha}+\frac{1}{\alpha^2}$
+por lo que despejando $\alpha$ se llega a la ecuación $\alpha^3-\alpha^2-\alpha-1=0$ de la que resolviendo se
+sabe entonces que $\alpha \approx 1.84$, lo cual indica que el orden de convergencia del método de Muller es aproximadamente
+1.84: menor que el método de Newton pero mejor que bisección por ejemplo. Sabiendo entonces su orden de convergencia se tiene que
+\[|p-x_1|=C|p-x_0|^{1.84}\]
+\[C^{0.84}|p-x_1|=\left(C|p-x_0|\right)^{1.84}\]
+y de forma inductiva se tiene que
+\begin{equation}
+    \label{x_0_convergence}
+    C^{0.84}|p-x_{n+1}|=(C|p-x_0|)^{1.84^{n}}
+\end{equation}
+entonces se debe cumplir que $C|p-x_0|<1$ para que posteriormente cuando $n\rightarrow\infty,\, x_n\rightarrow p$. En otras palabras,
+la convergencia del método está garantizada únicamente si el punto inicial escogido está lo suficientemente cerca de la raíz a encontrar.

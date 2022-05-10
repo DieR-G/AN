@@ -1,0 +1,69 @@
+\section{Preliminares matemáticos.}
+\subsection{Polinomio interpolante.}
+Si se conoce el valor de una función $f(x)$ en n+1 puntos defínase el polinomio
+interpolante como un polinomio de grado n que pasa por los n+1 puntos
+previamente establecidos y se utiliza para aproximar los valores de $f(x)$ en las cercanías de cada punto.
+La deducción más detallada de cómo se puede encontrar dicho polinomio y toda la teoría detrás
+se salen del ámbito de esta investigación, sin embargo, una explicación puede encontrarse en cualquier texto
+sobre análisis y métodos numéricos (véase por ejemplo \cite{atkinson1989introduction}).
+\subsection{Polinomio interpolante de Newton.}
+\begin{definition}
+    \label{newton_poly}
+    Dado un conjunto distinto de puntos $(x_n,f(x_n)),\ldots,(x_0,f(x_0))$ se define
+    el polinomio interpolante de Newton como un polinomio de grado n de la forma
+    \begin{equation}
+        \begin{split}
+            &P(x) =f[x_n]+f[x_n,x_{n-1}](x-x_n)\\
+            &\quad +f[x_n,x_{n-1},x_{n-2}](x-x_n)(x-x_{n-1})\\
+            &\qquad + \cdots + f[x_n,\ldots,x_0](x-x_n)(x-x_{n-1})\cdots(x-x_1) 
+        \end{split} 
+    \end{equation}  
+\end{definition}
+donde $f[x_n,\ldots,x_i]$ es la operación conocida como diferencia dividida de Newton,
+la cual se definirá más adelante. Del anterior planteamiento es posible observar cómo
+los n+1 puntos acaban definiendo un polinomio de grado n que sirve para interpolar
+la función en los valores conocidos.
+\subsection{Cota de error de un polinomio interpolante}
+Considerando entonces que un polinomio interpolante aproxima una función 
+en las cercanías de los n+1 puntos que lo definen, es posible estimar cuál es
+la magnitud máxima del error que se comente al realizar tal aproximación. Sea $P(x)$ el
+polinomio interpolante y $f(x)$ una función con n+1 derivadas continuas definidas en el menor intervalo $I$ que contenga los números reales $[x_n,x_{n-1},\ldots,x_0]$,
+se define el error cometido como la expresión
+\begin{equation}
+    \label{lagrange_error}
+    f(x)-P(x)=\frac{f^{\left(n+1\right)}(\xi)}{(n+1)!}(x-x_n)\cdots(x-x_0)
+\end{equation}
+con $\xi \in I$. \\De nuevo la demostración de la anterior expresión
+va más allá del ámbito de este trabajo y puede encontrarse en cualquier
+libro de análisis numérico.
+\subsection{Diferencias divididas.}
+Dada una función $f(x)$ se definen sus diferencias divididas como una
+operación recursiva de la forma
+\begin{align*}
+    f[x_n]                      &= f(x_n)\\
+    f[x_n,x_{n-1}]              &= \frac{f[x_{n-1}]-f[x_n]}{x_{n-1}-x_n}\\
+                                &\phantom{=} \vdots\\
+    \numberthis \label{newton_div}f[x_n,\ldots,x_0] &= \frac{f[x_{n-1},\ldots,x_0]-f[x_{n},\ldots,x_1]}{x_0-x_n} 
+\end{align*}
+Donde $f[x_n,x_{n-1}]$ es la primera diferencia dividida, $f[x_n,x_{n-1},x_{n-2}]$
+es la segunda diferencia dividida y así sucesivamente.
+
+\begin{lemma}
+    \label{diff_deriv}
+    $f[x_n,\ldots,x_0]=\frac{f^n(\xi)}{n!}$ para algún $\xi \in I$, donde $I$ es el intervalo
+    más pequeño que contiene los números reales $[x_n,\ldots,x_0]$.
+    \begin{proof}
+        Primero se plantea una función $f(x) \in C^nI$ aproximada por un polinomio interpolante
+        $P(x)$ de grado n partiendo de n+1 puntos $[x_n,\ldots,x_0]$ establecido anteriormente
+        en la definición (\ref{newton_poly}). Dado que $P(x)$ es una interpolación de $f(x)$ se plantea la
+        función $g(x)=f(x)-P(x)$ la cual tiene n+1 raíces, así que por el teorema de Rolle
+        generalizado se tiene que:
+            \begin{equation}
+                \begin{split}
+                    g^n(\xi)&=f^n(\xi)-P^n(\xi)=0\\
+                    g^n(\xi)&=f^n(\xi)-f[x_n,\ldots,x_0]n!=0\\
+                    f[x_n,\ldots,x_0] &= \frac{f^n(\xi)}{n!}
+                \end{split}
+            \end{equation}
+    \end{proof}
+\end{lemma}

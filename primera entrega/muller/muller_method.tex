@@ -1,0 +1,36 @@
+\documentclass[9pt,journal]{IEEEtran}
+
+% Set the font (output) encodings
+\usepackage[T1]{fontenc}
+
+% \usepackage[utf8]{inputenc} is no longer required (since 2018)
+
+% Spanish-specific commands
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage{mathtools}
+\usepackage{amsmath,amsthm,amsfonts}
+\usepackage{algorithm2e}
+\usepackage{pgfplots}
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\pgfplotsset{compat = newest}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{definition}{Definición}[section]
+\numberwithin{equation}{section}
+
+\begin{document}
+\input{muller_intro.tex}
+\input{math_preliminaries.tex}
+\input{deduction_muller.tex}
+\input{convergence_muller.tex}
+\input{advantages_muller.tex}
+\input{muller_pseudocode.tex}
+\input{examples_muller.tex}
+\newpage
+\bibliographystyle{plain}
+\bibliography{ref}
+\end{document}
