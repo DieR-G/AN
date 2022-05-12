@@ -1,0 +1,32 @@
+\section{Análisis sobre la eficiencia del método de Newton-Raphson}
+
+El método de Newton-Raphson, tiene una convergencia cuádratica, como se demostrará partiendo del siguiente teorema
+
+\begin{theorem}
+Asumiendo que $f,f',f''  $sean continuas para toda x en las proximidades de $p$ y asumiendo que $f(p) = 0, f'(p) \neq 0 $.Entonces si se escoge lo suficientemente cerca de $p$ , las iteraciones del método de Newton Raphson convergen a $p$. Con un orden de convergencia cuadrático
+\end{theorem}
+
+\begin{proof}
+Partiendo de 
+
+\begin{displaymath}
+\lim_{n->\infty}{\frac{p_{n+1} - p}{p_n - p}} = \lambda
+\end{displaymath}
+Usaremos el polinomio de Taylor de $f(x)$ en \textit{p}
+\begin{displaymath}
+ 0 = f(p_n) + (p-p_n)f'(p_n) + \frac{(p-p_n)^2}{2}f''(p)
+\end{displaymath}
+obtenemos
+\begin{displaymath}
+p - p_{n+1} =  - (p-p_n)^2 \frac{f''(p)}{2f'(p)}
+\end{displaymath}
+\begin{displaymath}
+\frac{|p - p_{n+1}|}{|(p-p_n)^2|} = \frac{f''(p)}{2f'(p)}
+\end{displaymath}
+
+\begin{displaymath}
+\lim_{n->\infty}{\frac{|p - p_{n+1}|}{|(p-p_n=|)^2}} =  \frac{f''(p)}{2f'(p)}
+\end{displaymath}
+Lo que prueba que la convergencia del método es cuadrática
+\end{proof}
+

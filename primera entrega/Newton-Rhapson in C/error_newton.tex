@@ -1,0 +1,25 @@
+\section{Análisis del error del método de Newton-Raphson}
+
+El error del método de Newton, puede obtenerse a partir de su deducción del método de Taylor, donde 
+\begin{displaymath}
+p - p_{n+1} =  - (p-p_n)^2 \frac{f''(p)}{2!f'(p)}
+\end{displaymath}
+
+es el error obtenido a través de la aproximación polinomial. 
+Sin embargo, mediante el Teorema del Valor Medio, puede obtenerse una fórmula más sencilla para obtener el error a lo largo de las iteraciones del método
+
+\begin{displaymath}
+f(p_n)= f(p_n) - f(p) = f'(\xi)(p_n-p)
+\end{displaymath}
+\begin{displaymath}
+\frac{f(p_n)}{ f'(\xi)} =(p_n-p)
+\end{displaymath}
+
+Donde si $f'(\xi)$ no cambia rápidamente entre p y $p_n$, entonces $f'(\xi) = f'(p)$ y
+\begin{displaymath}
+(p_n-p)= \frac{f(p_n)}{ f'(\xi)} = p_{n+1} - p_n
+\end{displaymath}
+obteniendo así la fórmula del error estándar de Newton
+\begin{equation}
+(p_n-p)=  p_{n+1} - p_n
+\end{equation}

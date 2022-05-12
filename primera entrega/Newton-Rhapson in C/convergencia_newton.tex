@@ -1,0 +1,56 @@
+\section{Convergencia del método de Newton-Raphson}
+
+El método de Newton tiene una convergencia considerablemente rápida, permitiendo obtener una aproximación extremadamente precisa con pocas iteraciones, como puede verse en ejemplo 1, y puede intuirse a través de su derivación por medio de series de Taylor, donde se asume que $ | p - p_o | $ es un valor pequeño, lo que permite desechar su elevación cuadrática $(p-p_o)^2$.
+
+Sin embargo, esto representa una limitante para el método, que requiere que la aproximación inicial $p_0$ se encuentre lo bastante cerca del valor real de \textit{p} para poder cumplir dicha asunción. Si este es el caso y se cumple que $f'(p) \neq 0$ entonces el método de Newton garantiza su convergencia, como puede verse en el siguiente teorema
+
+\begin{theorem}
+Sea $f \in C^2[a,b]$ con \textit{f} continua en $[a,b]$ y $p \in (a,b)$, y con $f(p) = 0$ y $f'(x) \neq 0$ y siendo $f,f', f''$ continuas, existe entonces un $\delta > 0$  tal que Newton - Raphson genera una sucesión $\{p\}^\infty_{n=0}$ que converge a p para cualquier valor inicial tomado de $[p-\delta, p+\delta]$.
+\end{theorem}
+
+\begin{proof}
+Partiendo que Newton-Raphson es un esquema de iteración proveniente de punto fijo\cite{atkinson}, pues $p = g(p_{n-1}), n \geq 0$ y obteniendo de él la sucesión $\{p\}^\infty_{n=0}$, para que esta converja, dada la existencia de un  $\delta > 0$, debe existir un $\epsilon$ tal que $|p - x| < \epsilon$ para toda x en  $[p-\delta, p+\delta]$.
+
+Sea 
+\begin{displaymath}
+M = \frac{Max_{x}|f''(x)|}{Min_{x}|f'(x)|}
+\end{displaymath}
+
+de la deducción del polinomio de Taylor para el método de newton, tenemos que 
+\begin{displaymath}
+ p - p_n = - (p-p_n)^2\frac{f'(p_n)}{2f''(p_n)}
+\end{displaymath}
+De esto, obtenemos que 
+\begin{displaymath}
+| p - p_{n+1}| \leq M|p - p_n|^2
+\end{displaymath}
+\begin{displaymath}
+M| p - p_{n+1}| \leq (M|p - p_n|)^2
+\end{displaymath}
+
+Siendo $[p-\delta, p+\delta]$ un sub-intervalo dentro de $[a,b]$ y partiendo de la existencia de un $\delta$, implica la existencia de un $\epsilon$ tal que $| p - p_0| \leq \epsilon$  y tomando que $M| p - p_0| < 1$. Teniendo también que $M| p - p_1| < 1$ y $M| p - p_1| < M| p - p_0|$, que implica $| p - p_1| \leq \epsilon$ y por transitividad, podemos extender el argumento hasta $p_n$ valores mediante inducción demostrando que  $| p - p_n| \leq \epsilon$  y  $M| p - p_n| < 1$ para $n \geq 0$
+
+\begin{displaymath}
+M| p - p_{n}| \leq (M|p - p_0|)^2
+\end{displaymath}
+\begin{displaymath}
+| p - p_{n}| \leq \frac{1}{M}(M|p - p_0|)^2
+\end{displaymath}
+
+como $(M|p - p_0|)^2 < 1$ entonces 
+\begin{displaymath}
+\lim_{n->\infty}{| p - p_{n}|} = \lim_{n->\infty}{\frac{1}{M}}
+\end{displaymath}
+
+
+En base a lo anterior y demostrando también a través de la definición de limites para sucesiones, siendo $L = 0$ y habiendo comprobado la existencia de $\epsilon$, se concluye que
+
+\begin{displaymath}
+\lim_{p->\infty}{\{p\}^\infty_{n=0}} = 0
+\end{displaymath}
+
+y por lo tanto el método de Newton-Raphson converge para cualquier valor $p_0$ tomado dentro del intervalo $[p-\delta, p+\delta]$.
+
+\end{proof}
+
+\input{convergencia_newton_2}
