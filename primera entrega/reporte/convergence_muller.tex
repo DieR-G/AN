@@ -1,5 +1,5 @@
-\section{Análisis de convergencia.}
-\subsection{Demostración de convergencia.}
+\subsection{Análisis de convergencia.}
+\subsubsection{Demostración de convergencia.}
 Sea $p$ la raíz de la función $f(x)$ que se busca encontrar con el algoritmo,
 se asume que si $x_n \rightarrow p$ entonces por el lemma \refeq{diff_deriv} $b \rightarrow f'(p)$
 y $a \rightarrow f''(p)$ entonces sustituyendo en (\refeq{muller_algorithm}) se tiene que
@@ -9,7 +9,7 @@ y $a \rightarrow f''(p)$ entonces sustituyendo en (\refeq{muller_algorithm}) se 
 \end{equation}
 y ya que por definición $f(p)=0$ se puede concluir que la expresión (\refeq{muller_convergence_eq})
 es igual a $0$ siempre que $f'(p) \neq 0$ así que el método converge a una raíz de la ecuación.
-\subsection{Análisis del error y orden de convergencia.}
+\subsubsection{Análisis del error y orden de convergencia.}
 Para establecer una expresión que defina el error del método anteriormente planteado se define $P(p)$
 como el polinomio interpolante de segundo grado evaluado en la raíz $p$ y $f(p)$ como la función aproximada
 evaluada en su raíz. Además por (\refeq{muller_algorithm}) se sabe que $x_{n+1}$ es una raíz del polinomio

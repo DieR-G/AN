@@ -1,12 +1,12 @@
-\section{Preliminares matemáticos.}
-\subsection{Polinomio interpolante.}
+\subsubsection{Preliminares matemáticos.}
+\subsubsection{Polinomio interpolante.}
 Si se conoce el valor de una función $f(x)$ en n+1 puntos defínase el polinomio
 interpolante como un polinomio de grado n que pasa por los n+1 puntos
 previamente establecidos y se utiliza para aproximar los valores de $f(x)$ en las cercanías de cada punto.
 La deducción más detallada de cómo se puede encontrar dicho polinomio y toda la teoría detrás
 se salen del ámbito de esta investigación, sin embargo, una explicación puede encontrarse en cualquier texto
 sobre análisis y métodos numéricos (véase por ejemplo \cite{atkinson}).
-\subsection{Polinomio interpolante de Newton.}
+\subsubsection{Polinomio interpolante de Newton.}
 \begin{definition}
     \label{newton_poly}
     Dado un conjunto distinto de puntos $(x_n,f(x_n)),\ldots,(x_0,f(x_0))$ se define
@@ -23,7 +23,7 @@ donde $f[x_n,\ldots,x_i]$ es la operación conocida como diferencia dividida de 
 la cual se definirá más adelante. Del anterior planteamiento es posible observar cómo
 los n+1 puntos acaban definiendo un polinomio de grado n que sirve para interpolar
 la función en los valores conocidos.
-\subsection{Cota de error de un polinomio interpolante}
+\subsubsection{Cota de error de un polinomio interpolante}
 Considerando entonces que un polinomio interpolante aproxima una función 
 en las cercanías de los n+1 puntos que lo definen, es posible estimar cuál es
 la magnitud máxima del error que se comente al realizar tal aproximación. Sea $P(x)$ el
@@ -36,7 +36,7 @@ se define el error cometido como la expresión
 con $\xi \in I$. \\De nuevo la demostración de la anterior expresión
 va más allá del ámbito de este trabajo y puede encontrarse en cualquier
 libro de análisis numérico.
-\subsection{Diferencias divididas.}
+\subsubsection{Diferencias divididas.}
 Dada una función $f(x)$ se definen sus diferencias divididas como una
 operación recursiva de la forma
 \begin{align*}

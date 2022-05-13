@@ -3,6 +3,7 @@
 En el método de Newton Raphson, se necesita saber la derivada de la función en cada aproximación. La fórmula para hallar el siguiente punto en dicho método es la siguiente:
 
 \begin{equation}
+\label{secant_eq1}
 p_n = p_{n-1} - \frac{f(p_{n-1})}{f'(p_{n-1})}
 \end{equation} 
 
@@ -18,13 +19,14 @@ Si $P_{n-2}$ está cerca de $P_{n-1}$, entonces tenemos lo siguiente:
 f'(p_{n-1}) \approx \frac{f(p_{n-2})-f(p_{n-1})}{p_{n-2}-p_{n-1}} = \frac{f(p_{n-1})-f(p_{n-2})}{p_{n-1}-p_{n-2}}
 \end{gather*}
 
-Al sustituir la aproximación de $f'(P_{n-1})$ en la fórmula (1), tenemos la fórmula del método de la secante \cite{Burden_English}:
+Al sustituir la aproximación de $f'(P_{n-1})$ en la fórmula \refeq{secant_eq1}, tenemos la fórmula del método de la secante \cite{Burden_English}:
 
 \begin{gather*}
 p_n = p_{n-1} - \frac{f(p_{n-1})}{\frac{f(p_{n-1})-f(p_{n-2})}{p_{n-1}-p_{n-2}}}
 \end{gather*}
 
 \begin{equation}
+    \label{secant_eq2}
 p_n = p_{n-1} - \frac{f(p_{n-1})(p_{n-1}-p_{n-2})}{f(p_{n-1})-f(p_{n-2})} 
 \end{equation}
 
@@ -91,6 +93,7 @@ x_{n+1 }= x_{n} - \frac{f(x_{n})(x_{n}-x_{n-1})}{f(x_{n})-f(x_{n-1})}
 \end{gather*}
 
 \begin{equation}
+    \label{secant_eq3}
 \Rightarrow e_{n+1}= e_{n} - \frac{f(e_n + r)(e_n - e_{n-1})}{f(e_n + r)-f(e_{n-1} + r)} 
 \end{equation}\\
 
@@ -100,7 +103,7 @@ Dejando:\\
 M= \frac{f''(r)}{2f'(r)} \Leftrightarrow \frac{f''(r)}{2} = Mf'(r)
 \end{gather*}\\\\
 
-Ignorando los términos de orden superior, el numerador de la ecuación (3) se convierte en lo siguiente:
+Ignorando los términos de orden superior, el numerador de la ecuación \refeq{secant_eq3} se convierte en lo siguiente:
 
 \begin{gather*}
     f(e_n +r)(e_n - e_{n-1})= (e_nf'(r)+\frac{e^{2}_n}{2}f''(r))(e_n -e_{n-1}) \\
@@ -108,7 +111,7 @@ Ignorando los términos de orden superior, el numerador de la ecuación (3) se c
     = e_nf'(r)(1+Me_n)(e_n -e_{n-1})
 \end{gather*} 
 
-El denominador de la ecuación (3) se convierte en:
+El denominador de la ecuación \refeq{secant_eq3} se convierte en:
 
 
 \begin{gather*}
@@ -120,7 +123,7 @@ El denominador de la ecuación (3) se convierte en:
 \end{gather*}
 
 
-Por lo tanto, la ecuación (3) ahora es:
+Por lo tanto, la ecuación \refeq{secant_eq3} ahora es:
 
 
 \begin{gather*}

@@ -1,4 +1,4 @@
-\documentclass[9pt,technote]{IEEEtran}
+\documentclass[9pt,journal]{IEEEtran}
 \usepackage{tikz}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -10,7 +10,7 @@
 \usepackage{tabularx}
 \usepackage{chngcntr}
 \usepackage{float}
-\pgfplotsset{width=10cm,compat=1.18}
+\pgfplotsset{width=9cm,compat=1.18}
 \counterwithin{figure}{section}
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 \usepackage[linesnumbered,ruled,boxed,commentsnumbered]{algorithm2e}
@@ -44,7 +44,7 @@
 \tableofcontents
 \section{Método de la secante.}
 \input{secant.tex}
-\clearpage
+\section{Método de la falsa posición.}
 \input{Regula-Falsi_description}
 \input{Regula-Falsi_deduction}
 \input{Regula-Falsi_convergence-error}
@@ -52,6 +52,7 @@
 \input{Regula-Falsi_pseudocode}
 \input{Regula-Falsi_examples}
 \clearpage
+\section{Método de Muller.}
 \input{muller_intro.tex}
 \input{math_preliminaries.tex}
 \input{deduction_muller.tex}
@@ -60,6 +61,7 @@
 \input{muller_pseudocode.tex}
 \input{examples_muller.tex}
 \clearpage
+\section{Método de Newton-Raphson en $\mathbb{C}$}
 \input{introduccion_newton}
 \input{demostracion_newton}
 \input{convergencia_newton}
@@ -68,6 +70,7 @@
 \input{extension_compleja_newton}
 \input{ventajas_desventajas_newton}
 \input{pseudocodigo_newton}
+\setcounter{subsection}{0}
 \input{ejemplos_newton}
 \bibliographystyle{plain}
 \bibliography{ref}

@@ -1,6 +1,6 @@
-\section{Demostración de convergencia y análisis del error}
+\subsubsection{Demostración de convergencia y análisis del error}
 
-\subsection{Preliminares a tomar en cuenta \cite{MR_PDF}:}
+\subsubsection{Preliminares a tomar en cuenta \cite{MR_PDF}:}
 
 Para la velocidad de convergencia, consideramos una secuencia $ [q_0,q_1,..] $ converge en $ q $, luego la diferencia $ (q_n - q) $ debe ser menor a medida que $ n $ se acerca al infinito; tomando la diferencia $ (q_n - q) $ como error $ (e_n) $, es dada por $ e_n = q_n - q $.\newline\newline
 Tomando la proporción de errores sucesivos $ \frac{|e_{n+1}|}{|e_n|} $ queremos que sea menor que uno, es decir, si $ n $ tiende al infinito, la proporción debe ser menor que uno.
@@ -16,13 +16,13 @@ Generalmente, tenemos:
     \lim_{n^{-} \to \infty} (\frac{|e_{n+1}|}{|e_n|^\alpha}) = k < 1
 \end{displaymath}
 
-\subsection{Tasa de convergencia:}
+\subsubsection{Tasa de convergencia:}
 
 En el método de posición falsa, la secuencia de aproximación es $ {x_1,x_2,\ldots x_n} $ que converge en $ x $. Sea $ e_n $: el error se da como $ x_n - x $. La sucesión converge si $ |e_n| \rightarrow 0 $ como $ |n| \rightarrow \infty $. El orden de convergencia está determinado por una relación asintótica $ |e_n| $ y $ |e_n - 1| $. Ahora bien, si consideramos una función $ f(x)=0 $ en el intervalo $ (x_0, x_1) $ que contiene la raíz, luego en el método de posición falsa, uno de los dos puntos dados $ x_0 $ o $ x_1 $ siempre son fijos y otros varían. Si se fija el punto $ x_0 $, la función se aproxima mediante una recta que pasa por $ (x_0, f(x_0)) $ y $ (x_n, f(x_n)) $, donde $ n=1,2,\ldots $
 
 % grafica
 
-\subsection{Calcular el error:}
+\subsubsection{Calcular el error:}
 
 Sea $ {x_n} \rightarrow x $. Cuando $ x_n $ es una secuencia $ {x_0,x_1,x_2,\ldots} $ converge a $ x $, entonces el error en la iteración $ n_{th} $ es dado por $ e_n = x_n - x $ para $ n > 0 $.\newline\newline
 Sea $ \lambda $ y $ \alpha $ constantes positivas tal que:
@@ -82,7 +82,7 @@ Simplificando:
     e_n = \frac{(e_{n-2})(f(e_{n-1} + x))-(e_{n-1})(f(e_{n-2} + x))}{f(e_{n-1} + x) - f(e_{n-2} + x)}
 \end{equation}
 
-\subsection{Expandiendo por las series de Taylor:}
+\subsubsection{Expandiendo por las series de Taylor:}
 
 La expansión de Taylor es dada por:
 

@@ -1,5 +1,5 @@
-\section{Ejemplos.}
-\subsection{Visualizando algunas iteraciones}
+\subsection{Ejemplos.}
+\subsubsection{Visualizando algunas iteraciones}
 Como primer ejemplo para visualizar el algoritmo se puede utilizar el polinomio deducido en
 (\refeq{muller_order_eq}) y encontrar todas sus raíces haciendo uso del algoritmo. Primero se presenta
 una gráfica del polinomio como función compleja, representando en los ejes $x,y$ de la gráfica el plano
@@ -12,7 +12,7 @@ correctos son:
 Una gráfica de dicho polinomio puede verse en la figura \refeq{zero_poly} (con $z$ siendo un número complejo).
 Se consideran algunas iteraciones del método de Muller con su respectiva forma y sus raíces de modo que se pueda visualizar
 su comportamiento y sucesiva aproximación a una de las raíces. Eligiendo los puntos más cercanos a cada raíz
-es posible utilizar el método para encontrarlas todas.
+es posible utilizar el método para encontrarlas todas.\\
 \begin{figure}
     \centering
     \begin{tikzpicture}
@@ -98,6 +98,7 @@ es posible utilizar el método para encontrarlas todas.
         3 & $-0.381386-0.049646i$ & $-0.380227+0.412363i$\\
     \end{tabular}
 \end{table}
+\newpage
 El cuadro \ref{iterations_table} muestra las sucesivas aproximaciones de las raíces de los polinomios interpolantes
 hacia la tercera raíz de la función original $(-0.419643+0.606290i)$, siendo que con únicamente tres iteraciones la
 magnitud de la distancia de la raíz más cercana del tercer polinomio interpolante y la raíz de la función original es
