@@ -1,0 +1,74 @@
+\documentclass[9pt,technote]{IEEEtran}
+\usepackage{tikz}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage{mathtools}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{pgfplots}
+\usepackage{tabularx}
+\usepackage{chngcntr}
+\usepackage{float}
+\pgfplotsset{width=10cm,compat=1.18}
+\counterwithin{figure}{section}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage[linesnumbered,ruled,boxed,commentsnumbered]{algorithm2e}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{definition}{Definición}[section]
+\numberwithin{equation}{section}
+\renewcommand{\arraystretch}{1.5}
+\setcounter{tocdepth}{1}
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\title{Raíces de funciones irracionales.}
+
+\author{
+    Ernesto José Canales Guillén (00051120@uca.edu.sv)\\
+    Víctor Daniel Peraza Bolaños (00143320@uca.edu.sv)\\
+    Diego Fernando Ramos Guardado (00043920@uca.edu.sv)\\
+    Laura Ivonne Shahidinejad Martínez (00365919@uca.edu.sv)
+}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\section{Método de la secante.}
+\input{secant.tex}
+\clearpage
+\input{Regula-Falsi_description}
+\input{Regula-Falsi_deduction}
+\input{Regula-Falsi_convergence-error}
+\input{Regula-Falsi_pros-cons}
+\input{Regula-Falsi_pseudocode}
+\input{Regula-Falsi_examples}
+\clearpage
+\input{muller_intro.tex}
+\input{math_preliminaries.tex}
+\input{deduction_muller.tex}
+\input{convergence_muller.tex}
+\input{advantages_muller.tex}
+\input{muller_pseudocode.tex}
+\input{examples_muller.tex}
+\clearpage
+\input{introduccion_newton}
+\input{demostracion_newton}
+\input{convergencia_newton}
+\input{error_newton}
+\input{eficiencia_newton}
+\input{extension_compleja_newton}
+\input{ventajas_desventajas_newton}
+\input{pseudocodigo_newton}
+\input{ejemplos_newton}
+\bibliographystyle{plain}
+\bibliography{ref}
+\end{document}

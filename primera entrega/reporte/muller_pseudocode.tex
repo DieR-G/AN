@@ -1,0 +1,40 @@
+\section{Pseudocódigo.}
+El siguiente algoritmo asume la utilización de aritmética de números complejos dentro del mismo,
+además la operación de diferencias divididas calculada de forma externa con un procedimiento similar
+al mostrado en (\refeq{newton_div}). La condición de paro es que el valor absoluto de la función evaluada
+en la última aproximación encontrada sea menor a una tolerancia $\epsilon$ o que la cantidad de iteraciones
+supere un valor límite previamente establecido.
+\begin{algorithm}
+    \DontPrintSemicolon
+    \KwData{$x_2,x_1,x_0$ valores distintos para interpolar $f(x)$, un valor $\epsilon$ de tolerancia y un valor $N$
+    que define la cantidad máxima de iteraciones.}
+    \KwResult{La raíz de $f(x)$ más cercana a los puntos iniciales dados o un mensaje de error en
+    caso de que no se cumpla la tolerancia mínima}
+    \Begin{
+    $x_{n+1} \gets 0$\;
+    $x_{n} \gets x_2$\;
+    $x_{n-1} \gets x_1$\;
+    $x_{n-2} \gets x_0$\;
+    $x_{n+1} \gets 3$\;
+    \While{$|f(x_{n+1})|<\epsilon \,{\bf or}\, i \geq N $}{
+        $a \gets f[x_n,x_{n-1},x_{n-2}]$\;
+        $b \gets f[x_n,x_{n-1}]+f[x_n,x_{n-2}]-f[x_{n-1},x_{n-2}]$\;
+        $c \gets f(x_n)$\;
+        $D \gets \sqrt{b^2-4ac}$\;
+        \tcc{Escoge el valor de mayor magnitud para el denominador}
+        \eIf(){$|b-D|\le|b+D|$}{
+            $E \gets b+D$
+        }(){$E \gets b-d$}
+        $x_{n+1} \gets x_n-\frac{2c}{E}$\;
+        $x_{n-2} \gets x_{n-1}$\;
+        $x_{n-1} \gets x_{n}$\;
+        $x_{n} \gets x_{n+1}$\;
+        $i \gets i+1$
+    }
+    \eIf{$|f(x_{n+1})|<\epsilon$}{
+        \Return{$x_{n+1}$}
+    }
+    {\KwOut{No se pudo encontrar un valor para la raíz.}}
+    }
+    \caption{Método de Muller\label{IR}}
+\end{algorithm}

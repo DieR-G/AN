@@ -1,0 +1,46 @@
+\section{Demostración del método}
+Supongamos que $ f \in C^2[a,b] $ y sea $ p_n \in [a,b]$ una aproximación a \textit{p} de tal forma que $f'(p_n) \neq 0$ y $ | p - p_n | $ es un valor pequeño. Encontrando el primer polinomio de Taylor para $f(x)$ en $p_n$ y evaluado en $x = p$, se obtiene:
+
+\begin{displaymath}
+ f(p) = f(p_n) + (p-p_n)f'(p_n) + \frac{(p-p_o)^2}{2!}f''(\xi(p))
+\end{displaymath}
+
+
+\noindent Donde $\xi(p)$ es un valor que se encuentra entre $p$ y $p_n$. Dado que $f(p) = 0$, se obtiene lo siguiente
+
+\begin{displaymath}
+ 0 = f(p_n) + (p-p_n)f'(p_n) + \frac{(p-p_n)^2}{2!}f''(p)
+\end{displaymath}
+
+
+Como asumimos que $ | p - p_n | $ es un valor pequeño, entonces el valor obtenido de $(p-p_n)^2$ es aún más pequeño, lo que permite que sea despreciable, quedando así la ecuación como
+
+\begin{displaymath}
+    0 \approx f(p_n) + (x-p_n)f'(p_n)
+\end{displaymath}
+
+resolviendo para \textit{p} obtenemos
+
+\begin{displaymath}
+    p \approx p_n - \frac{f(P_n)}{f'(p_n)}
+\end{displaymath}
+
+De lo cual obtenemos el método de Newton-Raphson, el cual a partir de un punto inicial $p_0$ se obtiene una sucesión $\{p\}^\infty_{n=0}$ y una aproximación a la raíz \textit{p}
+
+\begin{equation}
+    p = p_{n-1} - \frac{f(p_{n-1})}{f'(p_{n-1})}
+\end{equation}
+
+Obteniendo asi mismo una ecuación que será muy útil para encontrar el error y demostrar convergencia de Newton-Raphson
+\begin{displaymath}
+0 = \frac{f(p_n)}{f'(p_n)} + p-p_o +(x-p_n)^2 \frac{f''(p)}{2!f'(p)}
+\end{displaymath}
+\begin{displaymath}
+p = p_n - \frac{f(p_n)}{f'(p_n)}  - (p-p_n)^2 \frac{f''(p)}{2!f'(p)}
+\end{displaymath}
+\begin{displaymath}
+p = p_{n+1}  - (p-p_n)^2 \frac{f''(p)}{2!f'(p)}
+\end{displaymath}
+\begin{displaymath}
+p - p_{n+1} =  - (p-p_n)^2 \frac{f''(p)}{2!f'(p)}
+\end{displaymath}

@@ -1,0 +1,160 @@
+\subsection{Convergencia para dos raíces o más}
+
+Habiendo observado como el método de Newton converge de manera muy rápida hacia la raíz cuando existe solamente una, podemos extender la anterior definición para emplear el método a n raíces, con $n \geq 2$, partiendo de la premisa que todo $p_0$ dentro de $[p-\delta, p+\delta]$ convergerá al valor de la raíz más cercana, siempre y cuando dentro del intervalo escogido se cumplan las condiciones de que $f,f'$ son continuas y $f'(p_0) \neq 0$, y por lo tanto podemos enunciar la siguiente definición
+
+\begin{definition}
+
+Si $p_*$ es una raíz de \textit{f}, el área de atracción de $p_*$ esta compuesta por todos aquellos valores $p_0$ tales que el método de Newton al comenzar desde $p_0$ converge hacia $p_*$
+
+\begin{displaymath}
+B(x_*) = {x_0|x_n =  N^n(x_0) \xrightarrow{}  x_*}
+\end{displaymath}
+
+\end{definition}
+
+A partir de la determinación del tipo de puntos al que pertenecen los valores de $p_0$, podremos establecer que los puntos iniciales tenderán a la raíz más cercana. 
+Los tipos de puntos fijos se establecen en base a la siguiente definición:
+
+\begin{definition}
+ Supóngase un mapa $f: X \xrightarrow[]{}X$ es diferenciable en un punto fijo $p_*$, entonces
+ \begin{itemize}
+     \item $p_*$ es atrayente si y solo si $|f(p_*)|<1$
+     \item $p_*$ es super-atrayente si y solo si $|f(p_*)|=0$
+     \item $p_*$ es repelente si y solo si $|f(p_*)|>1$
+ \end{itemize}
+\end{definition}
+
+Entonces, en vista de que $|g'(p)| = 0$ ya que 
+\begin{displaymath}
+     g(x)= 1 - \frac{f(x)}{f'(x)} 
+\end{displaymath}
+
+con derivada 
+
+\begin{displaymath}
+     g'(x)= 1 - \frac{(f'(x)f'(x))-(f(x)f''(x))}{(f'(x))^2} = \frac{(f(x)f''(x))}{(f'(x))^2}
+\end{displaymath}
+
+y asumiendo que $f(p)=0$
+\begin{displaymath}
+     g'(x)= 0
+\end{displaymath}
+
+lo que permite concluir que los puntos dentro del intervalo $[p-\delta, p+\delta]$, son super-atrayentes y por ende convergerán a la raíz más cercana
+
+Este comportamiento puede observarse buscando las raíces de la ecuación $x^2-1 = 0$, la cual posee dos raíces reales 1 y -1 como puede verse en Figura \ref{fig:graph_cuadratica}. 
+
+\begin{figure}[H]
+    \begin{tikzpicture}
+\begin{axis}[
+axis x line = middle,
+axis y line =  center,
+grid = minor
+]
+\addplot[
+color=red,
+]{x^2-1};
+\addplot[only marks] table {
+1   0
+-1  0
+};
+\end{axis}
+\end{tikzpicture}
+\centering
+    \caption{Gráfica de $x^2-1$}
+    \label{fig:graph_cuadratica}
+\end{figure}
+
+
+Coloreando cada $p_0$ en base a que raíz se acercarán en la aproximación, vemos que obtenemos la siguiente imagen
+
+Donde se observa como el plano se divide en dos partes uniformes con su respectivo color, en base a cual será la raíz a la que el valor se aproximará
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/eq1-1.png}
+    \caption{Zonas de convergencia de $x^2-1$}
+    \label{fig:eq_cuadratica_1}
+\end{figure}
+
+si, ahondamos más en la imagen y generamos un gradiente de color, donde mientras más oscuro más rápidamente converge el punto, o lo que es lo mismo, menos iteraciones se necesitan, obtenemos lo siguiente:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.26]{images/eq1-2.png}
+    \caption{Rapidez de convergencia de los puntos de $x^2-1$}
+    \label{fig:eq_cuadratica_2}
+\end{figure}
+
+
+Donde podemos ver que al aproximarnos a 0, los ritmos de convergencia tienden a aumentar de manera drástica, al punto de no converger.
+Esto se debe a que si evaluamos un valor de $p_n = 0$, $g'(0) = 2x = 2(0) = 0$, indefiniendo el resultado del método en ese punto
+
+Veamos otro ejemplo con un comportamiento curioso, el cual también tiene puntos donde el método se indefine
+Sea $f(x) = x^3-x$, que al resolver algebraicamente obtenemos $(x-1)(x-0)(x+1)$ con raices en 1,0,-1.
+A partir de su gráfica vemos que existen dos puntos críticos, que determinándolos a través de $f'(x) = 0$ da como resultado $-\frac{1}{\sqrt{3}}, \frac{1}{\sqrt{3}}$. 
+
+\begin{figure}[h]
+    \begin{tikzpicture}
+\begin{axis}[
+axis x line = middle,
+axis y line =  center,
+grid = minor
+]
+\addplot[
+color=red,
+]{x^3-x};
+\addplot[only marks] table {
+1   0
+-1  0
+0   0
+};
+\end{axis}
+\end{tikzpicture}
+\centering
+    \caption{Gráfica de $x^3-x$}
+    \label{fig:graph_cubica}
+\end{figure}
+
+
+De esto podemos concluir que $(-\infty,-\frac{1}{\sqrt{3}}) \subset  B(-1)$ y $(\frac{1}{\sqrt{3}}, \infty) \subset  B(1)$. Para el caso de $B(0)$, su determinación es un poco más complicada, ya que debemos tomar en cuenta los puntos crítico, los cuales producirán un efecto cíclico, en este caso de período 2, en Newton-Raphson si se les tome como puntos iniciales o cualquier punto inicial que, después de n iteraciones, haga que la tangente de la función sea igual a uno de ellos \cite{wiersma}. 
+
+Partiendo la premisa anterior premisa, tenemos que determinar en que punto $x_0 = x_2$, es decir $x = N(N(x)) = N^2(x)$.  Este proceso se simplifica ya que $f$ es una función impar y entonces $-f(x) = f(-x)$, por lo tanto a través de simetría tenemos que obtendremos $N^2(x)$ si $-x = N(x)$. Para esto calculamos la función en el método
+
+\begin{gather*}
+    N(x) = x - \frac{x^3-x}{3x^2-1} \\
+    N(x) = \frac{2x^3}{3x^2-1}
+\end{gather*}
+
+luego igualamos a -x y resolvemos
+
+\begin{gather*}
+    -x = \frac{2x^3}{3x^2-1}\\
+    0 = 5x^3-x\\
+    x = \pm \frac{1}{\sqrt{5}} \vee x = 0
+\end{gather*}
+
+Y de esto podemos concluir que $(-\frac{1}{\sqrt{5}},\frac{1}{\sqrt{5}}) \subset B(0)$
+\\
+\\
+Ahora bien, veamos que pasa entre los valores de $(-\frac{1}{\sqrt{3}},-\frac{1}{\sqrt{5}})$ y $(\frac{1}{\sqrt{5}},\frac{1}{\sqrt{3}})$. Como la función es simétrica, entonces lo que pasa en $(\frac{1}{\sqrt{5}},\frac{1}{\sqrt{3}})$, será igual que en $(-\frac{1}{\sqrt{3}},-\frac{1}{\sqrt{5}})$. En estos dos intervalos se suceden áreas de convergencia hacia $B(1)$ y $B(-1)$, las cuales se ven divididas por valores los cuales luego de n iteraciones caerían en alguno de los puntos críticos de la función, indefiniendo el método.
+
+
+
+Veamos por ejemplo un punto un poco a la izquierda de $\frac{1}{\sqrt{3}}$, por ejemplo 0.5773442692, el cual si evaluamos en Newton, nos devolverá $-18518.03739$, un valor que se encuentra dentro de los puntos convergentes hacia -1, hasta que encontremos un valor cuya n iteración sea $-\frac{1}{\sqrt{3}}$ , el cual al igualar ese valor en el método obtenemos 0.465601, por lo tanto $(\frac{1}{\sqrt{3}},0.465601) \subset  B(-1)$.
+Si luego probamos con 0.465600, la siguiente iteración devuelve un número positivo muy grande, que cae dentro de $B(1)$. Este comportamiento se mantendrá hasta que hallemos un número cuya n-esima iteración de como resultado $\frac{1}{\sqrt{3}}$ e indefina la función. 
+
+Estos patrones continúan y se alternan entre cada división causada por valores que iteren hacia alguno de los puntos críticos de la función, y podremos determinar cada una de estas divisiones igualando l a función a uno de los puntos previos obtenidos,, esto nos genera unos patrones curiosos, como puede verse en Figura \ref{fig:eq_cubica_1} y \ref{fig:eq_cubica_2}
+\begin{figure}[H]
+
+        \centering
+        \includegraphics{images/eq2-1.png}
+        \caption{Áreas de convergencia de $x^3-x$}
+        \label{fig:eq_cubica_1}
+\end{figure}
+    
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.26]{images/eq2-2.png}
+    \caption{Rapidez de convergencia de los puntos de $ x^3-x$}
+    \label{fig:eq_cubica_2}
+\end{figure}

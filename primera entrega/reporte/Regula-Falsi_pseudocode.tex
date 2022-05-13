@@ -1,0 +1,39 @@
+\section{Pseudocódigo}
+
+Para encontrar una solución para $ f(x) = 0 $ dada la función $ f $ continua en el intervalo $ (p_0, p_1) $ donde $ f(p_0) $ y $ f(p_1) $ tienen signos opuestos:
+
+\begin{algorithm}
+    \caption{Método de posición falsa}
+    \KwIn{Aproximación inicial $ p_0, p_1 $;  tolerancia $ TOL $;  máximo número de iteraciones $ N_0 $.}
+    \KwOut{Solución aproximada $ p $ o mensaje de error.}
+    
+    $ i = 2 $; $ q_0 = f(p_0) $; $ q_1 = f(p_1) $
+    
+    \BlankLine
+    
+    \While {$i \le N_0 $} {
+        $ p = p_0 - \frac{q_0 (p_1 - p_0)}{q_1 - q_0} $
+        
+        \BlankLine
+        
+        \If{$ |p - p_0| < TOL $} {
+                \tcp {Procedimiento exitoso}
+                \KwOut {$ p $}
+            }
+        
+        \BlankLine
+        
+        $ i = i + 1 $; $ q = f(p) $
+        \BlankLine
+        
+        \If{$ q . q_1 < 0 $} {
+                $ p_0 = p_1 $; $ q_0 = q_1 $
+            }
+            
+        \BlankLine
+        
+        $ p_0 = p $; $ q_0 = q $
+    }
+    
+    \KwOut{El método falló luego de $ N_0 $ iteraciones}
+\end{algorithm}

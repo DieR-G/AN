@@ -1,0 +1,60 @@
+\section{Deducción del método}
+
+Originalmente en \cite{AN_Spanish}, tenemos que si se pueden elegir dos aproximaciones iniciales $ x_{n-1} $ y $ x_n $ tales que los dos valores de la función de esos puntos tengan signo opuesto en una función continúa comprendida entre $ [x_{n-1}, x_n] $ ], entonces es posible generar una sucesión de valores que siempre tengan esta propiedad.\newline\newline
+Para iniciar, construimos la recta que pasa por los puntos $ (x_{n-1}, f(x_{n-1})) $ y $ (x_n, f(x_n) $. De acuerdo con la figura, se tiene que $ m_1 = m_2 $;\newline\newline
+
+%Grafica
+
+Se calcula la intersección con el eje $ x $ de la recta trazada anteriormente y a este punto se le denotará como $ x_{n+1} $.\newline\newline
+Para encontrar la ecuación general que nos dará $ x_{n+1} $ en cada recta trazada, primero necesitamos encontrar la pendiente de la recta $ m_2 $:
+
+\begin{displaymath}
+    m_2 = \frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}
+\end{displaymath}
+
+Luego encontramos la pendiente de la recta $ m_1 $ que quedaría desde el intercepto hasta el extremo del intervalo en donde la función cambia de signo:
+
+\begin{displaymath}
+    m_1 = \frac{f(x_{n+1}) - f(x_{n-1})}{x_{n+1} - x_{n-1}}
+\end{displaymath}
+
+Por tanto, igualando las ecuaciones de ambas pendientes, debido que son dos segmentos de la misma recta:
+
+\begin{displaymath}
+    m_1 = m_2
+\end{displaymath}
+
+\begin{displaymath}
+    \frac{f(x_{n+1}) - f(x_{n-1})}{x_{n+1} - x_{n-1}} = \frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}
+\end{displaymath}
+
+El valor del cruce por cero se define cuando se tiene un valor de $ x_{n+1} $, dado por la recta definida por la ecuación anterior, donde se cumple que $ f(x_{n+1}) = 0 $.\newline\newline
+Así, la ecuación anterior queda de la siguiente forma:
+
+\begin{displaymath}
+    \frac{0 - f(x_{n-1})}{x_{n+1} - x_{n-1}} = \frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}
+\end{displaymath}
+
+Despejando $ x_{n+1} $ se obtiene:
+
+\begin{displaymath}
+    (x_n - x_{n-1})(0 - f(x_{n-1})) = (x_{n+1} - x_{n-1})(f(x_n) - f(x_{n-1}))
+\end{displaymath}
+
+\begin{displaymath}
+    -\frac{(x_n - x_{n-1})(f(x_{n-1}))}{(f(x_n) - f(x_{n-1}))} = (x_{n+1} - x_{n-1})
+\end{displaymath}
+
+\begin{equation}
+    \label{eq1_regula_falsi}
+    x_{n+1} = x_{n-1} - \frac{(x_n - x_{n-1})(f(x_{n-1}))}{(f(x_n) - f(x_{n-1}))}
+\end{equation}
+
+Simplificando \eqref{eq1_regula_falsi}:
+
+\begin{equation}
+    \label{eq2_regula_falsi}
+    x_{n+1} = \frac{(x_{n-1})(f(x_n)) - (x_n)(f(x_{n-1}))}{(f(x_n) - f(x_{n-1}))}
+\end{equation}
+
+Utilizando la ecuación \eqref{eq2_regula_falsi} anterior, el valor de $ x_{n+2} $ se elige tomando un valor entre $ x_{n-1} $ y $ x_n $ de tal forma que el valor de la función sea opuesto en signo a $ f(x_{n+1}) $. Así, valores de $ f(x_{n+1}) $ y $ x_{n+2} $ definen un menor intervalo que contiene el cruce por cero. El proceso continúa tomando siempre lados opuestos del cruce por cero. 
