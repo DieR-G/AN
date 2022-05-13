@@ -1,0 +1,49 @@
+\section{Ejemplos}
+
+\subsection{Dato curioso}
+El método de la falsa posición se aplica a la predicción de cantidades traza de contaminantes atmosféricos producidos por reacciones de combustión, como las que se encuentran en fuentes puntuales industriales.
+
+\subsection{Ejercicio}
+Considerando la función:
+\begin{displaymath}
+    f(x) = 1 + 2x - 3x^2e^{-x} + 2x^3sin(x)e^{- \frac{x}{5}}
+\end{displaymath}
+Calcular el cruce por cero dentro del intervalo $ [6, 7] $; usando un error máximo de $ 10^{–5} $.
+
+\begin{table}[h!]
+    \centering
+    \caption{Resultados del cálculo de los cruces por cero.}
+    \label{table1_regula_falsi}
+    \begin{tabular}{c|c|c|c|c|c|c}
+        \textbf{$ n $} & \textbf{$ x_{n-1} $} & \textbf{$ f(x_{n-1}) $} & \textbf{$ x_n $} & \textbf{$ f(x_n) $} & \textbf{$ x_{n+1} $} & \textbf{$ f(x_{n+1}) $}\\
+        \hline
+         $ 0 $ & $ 6.0000 $ & $ -23.624 $ & $ 7.0000 $ & $ 126.00 $ & $ 6.1578 $ & $ -3.9574 $ \\
+         $ 1 $ & $ 6.1578 $ & $ -3.9574 $ & $ 7.0000 $ & $ 126.00 $ & $ 6.1835 $ & $ -0.5292 $ \\ 
+         $ 2 $ & $ 6.1835 $ & $ -0.5292 $ & $ 7.0000 $ & $ 126.00 $ & $ 6.1869 $ & $ -0.0681 $ \\ 
+         $ 3 $ & $ 6.1869 $ & $ -0.0681 $ & $ 7.0000 $ & $ 126.00 $ & $ 6.1873 $ & $ -0.0087 $ \\ 
+         $ 4 $ & $ 6.1873 $ & $ -0.0087 $ & $ 7.0000 $ & $ 126.00 $ & $ 6.1874 $ & $ -0.0011 $ \\ 
+         $ 5 $ & $ 6.1874 $ & $ -0.0011 $ & $ 7.0000 $ & $ 126.00 $ & $ 6.1874 $ & $ -0.0001 $ \\ 
+         $ 6 $ & $ 6.1874 $ & $ -0.0001 $ & $ 7.0000 $ & $ 126.00 $ & $ 6.1874 $ & $ -1.8e-5 $ \\ 
+    \end{tabular}
+\end{table}
+
+El cruce por cero de la función $ f(x) $ en $ [6, 7] $ nos devuelve un valor de $ x_{n+1} = 6.1874$
+
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis x line = middle,
+            axis y line =  center,
+            grid = minor
+            ]
+            \addplot[
+                color = red,
+                domain = 5:10
+                ]{1 + 2*x - 3*(x^2)*pow(e,-x) + 2*(x^3)*sin(deg(x))*pow(e,-x/5)};
+            \filldraw[black] (6.1874, -0.000018) circle (2pt) node[anchor=south west]{$ (6.1874, -0.000018) $};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfica de $ f(x) = 1 + 2x - 3x^2e^{-x} + 2x^3sin(x)e^{- \frac{x}{5}} $}
+    \label{regula_grap_ej2}
+\end{figure}

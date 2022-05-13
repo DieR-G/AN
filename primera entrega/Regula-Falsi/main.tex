@@ -1,0 +1,38 @@
+\documentclass[9pt,journal]{IEEEtran}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage{mathtools}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.18}
+\usepackage[linesnumbered,ruled,boxed,commentsnumbered]{algorithm2e}
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{definition}{Definición}[section]
+\numberwithin{equation}{section}
+
+\title{Método de posición falsa (Regula Falsi)}
+\author{ERNESTO JOSE CANALES GUILLEN}
+\date{May 2022}
+
+\begin{document}
+
+\maketitle
+
+\input{Regula-Falsi_description}
+\input{Regula-Falsi_deduction}
+\input{Regula-Falsi_convergence-error}
+\input{Regula-Falsi_pros-cons}
+\input{Regula-Falsi_pseudocode}
+\input{Regula-Falsi_examples}
+
+\newpage
+
+\bibliographystyle{plain}
+\bibliography{bibliography.bib}
+
+\end{document}
