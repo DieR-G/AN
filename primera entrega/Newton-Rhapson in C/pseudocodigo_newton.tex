@@ -1,24 +1,5 @@
+
 \section{Pseudocódigo}
-\begin{algorithm}
-\SetKwComment{Comment}{/* }{ */}
-
-\caption{Método de Newton-Raphson en $\mathbb{R}$ }
-\KwIn{aproximación inicial $p_0$, tolerancia TOL, máximo número de iteraciones $n_{max}$}\
-\KwOut{solución aproximada a  \textit{p} o mensaje de error}
-$ i = 1$ 
-\BlankLine
-$p = p_0 - f(p_0)/f'(p_0)$
-\BlankLine
-\While{$i \le n_max $}{
-    \If{$\|p-p_0\|<TOL$}{\tcp{Procedimiento exitoso}\Return{p}} 
-    $i = i + 1$
-    \BlankLine
-    $p = p_0$
-}
-\Return \KwOut{"El metodo fallo luego de N iteraciones, N="$n_{max}$}
-\end{algorithm}
-
-
 \begin{algorithm}
 \SetKwComment{Comment}{/* }{ */}
 
