@@ -1,0 +1,69 @@
+Home:
+
+<DropDownContainer>
+    anchor_x: "center"
+    anchor_y: "top"
+
+<CustomDropDown>
+    Button:
+        text: "Secante"
+        height: "30dp"
+        on_release: root.select("Secante")
+        size_hint_y: None
+        font_name: "fonts/JetBrainsMono-Bold.ttf"
+        font_size: "20sp"
+        background_normal: ""
+        background_color: (255/255,230/255,154/255,1)
+    Button:
+        text: "Regula falsi"
+        height: "30dp"
+        on_release: root.select("Regula falsi")
+        size_hint_y: None
+        font_name: "fonts/JetBrainsMono-Bold.ttf"
+        font_size: "20sp"
+        background_normal: ""
+        background_color: (255/255,230/255,154/255,1)
+    Button:
+        text: "Muller"
+        height: "30dp"
+        on_release: root.select("Muller")
+        size_hint_y: None
+        font_name: "fonts/JetBrainsMono-Bold.ttf"
+        font_size: "20sp"
+        background_normal: ""
+        background_color: (255/255,230/255,154/255,1)
+    Button:
+        text: "Newton en C"
+        height: "30dp"
+        on_release: root.select("Newton en C")
+        size_hint_y: None
+        font_name: "fonts/JetBrainsMono-Bold.ttf"
+        font_size: "20sp"
+        background_normal: ""
+        background_color: (255/255,230/255,154/255,1)
+        
+
+<MethodContainer>
+    orientation: "vertical"
+    padding: ["32dp","0dp"]
+    Label:
+        size_hint: None, 0.1
+        markup: True
+        font_name: "fonts/JetBrainsMono-Bold.ttf"
+        font_size: "20sp"
+        text_size: self.width, None
+        halign: 'left'
+        text: "[color=#92B4EC][b]Método:[/b][/color]"
+
+<Home>:
+    orientation: "vertical"
+    size_hint: 1, 1
+    height: self.minimum_height
+    Label:
+        markup: True
+        font_name: "fonts/JetBrainsMono-ExtraBold.ttf"
+        font_size: "36sp"
+        text_size: self.width, None
+        halign: 'center'
+        text: "[color=#92B4EC][b]Raíces de funciones irracionales[/b][/color]"
+        size_hint: 1, 0.2
